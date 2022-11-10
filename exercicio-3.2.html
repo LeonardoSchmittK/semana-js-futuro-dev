@@ -1,0 +1,27 @@
+<html lang="pt-br">
+  <p>REVERTER PALAVRA:</p>
+  
+  <input type="text" id="reverter" name="age" text="Idade" placeholder="Ex: Banana">
+    <span class="caption">PALAVRA</span>
+  
+    <div>
+        <input onclick="fn(document.querySelector('input#reverter').value)" type="button" id="submit" name="calculate" value="Calcular">
+    </div>
+    <h1 class="title"></h1>
+  </body>
+  <script>
+    
+    const calculate = document.getElementById('submit')
+
+function fn(val) {
+    let reversed = ""
+    for(let i = val.length;i>=0;--i){
+        reversed+=val.charAt(i)
+    }
+    document.querySelector(".title").innerHTML = reversed
+
+}
+        
+    
+  </script>
+</html>

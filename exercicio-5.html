@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="calculator.css" rel="stylesheet">
+    <script src="calculator.js"></script>    
+    <title>Calculator!</title>
+    <style>
+      body {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+      }
+        table {
+            min-width: 350px;
+            max-width: 650px;
+        }
+        button {
+            width: 100%;
+            font-size: 150%;
+        }
+        .ac {
+            color: red;
+        }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td colspan="4"><button id="result">DIGITE ALGO!</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="addInExpression(this.innerHTML)">1</button></td>
+        <td><button onclick="addInExpression(this.innerHTML)">2</button></td>
+        <td><button onclick="addInExpression(this.innerHTML)">3</button></td>
+        <td><button onclick="addInExpression(this.innerHTML)">+</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="addInExpression(this.innerHTML)">4</button></td>
+        <td><button onclick="addInExpression(this.innerHTML)">5</button></td>
+        <td><button onclick="addInExpression(this.innerHTML)">6</button></td>
+        <td><button onclick="addInExpression(this.innerHTML)">-</button></td>
+      </tr>
+      <tr>
+        <td><button onclick="addInExpression(this.innerHTML)">7</button></td>
+        <td><button onclick="addInExpression(this.innerHTML)">8</button></td>
+        <td><button onclick="addInExpression(this.innerHTML)">9</button></td>
+        <td><button onclick="addInExpression(this.innerHTML)">*</button></td>
+      </tr>
+      <tr>
+        <td colspan="3"><button onclick="addInExpression(this.innerHTML)">0</button></td>
+        <td colspan="3"><button onclick="addInExpression(this.innerHTML)">/</button></td>          
+      </tr>
+      <tr>
+        <td colspan="2"><button onclick="cleanResult()" class="ac">AC</button></td>
+        <td><button onclick="addInExpression(this.innerHTML)">.</button></td>
+        <td><button onclick="getResult()">=</button></td>          
+      </tr>
+    </table>
+  </body>
+  <script>
+    const btnResult = document.querySelector("button#result")
+
+    let expression = "";
+
+    function addInExpression(char){
+        expression+=char
+        btnResult.innerHTML = expression
+
+    }
+
+    function getResult(){
+      btnResult.innerHTML = eval(expression) +""
+    }
+
+    function cleanResult(){
+      btnResult.innerHTML = "DIGITE ALGO!"
+
+    }
+
+  </script>
+</html>

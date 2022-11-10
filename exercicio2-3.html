@@ -1,0 +1,21 @@
+
+<html lang="pt-br">
+    <p>PAR OU IMPAR:</p>
+   
+    <input type="number" id="userInput" name="age" text="Idade" placeholder="Ex: 35" maxlength="200" id="age" min="0" max="119">
+    <span class="caption">NUMERO</span>
+   
+      <div>
+        <input onclick="parOuImpar(+document.querySelector('input#userInput').value)" type="button" id="submit" name="calculate" value="Calcular">
+      </div>
+    
+      
+    </body>
+    <script>
+      
+    
+
+
+      const parOuImpar = (numero) => alert(numero%2===0?"PAR":"ÍMPAR")
+    </script>
+  </html>

@@ -1,0 +1,43 @@
+
+<html lang="pt-br">
+    <p>POLIGONOS:</p>
+   
+    <input type="number" id="userInput" name="age" text="Idade" placeholder="Ex: 35" maxlength="200" id="age" min="0" max="119">
+    <span class="caption">lados</span>
+    <input type="number" name="age" text="Idade" placeholder="Ex: 35" maxlength="200" id="age" min="0" max="119">
+    <span class="caption">medida do lado</span>
+   
+      <div>
+        <input type="button" id="submit" name="calculate" value="Calcular">
+      </div>
+      <ul>
+        <caption>Poligonos disponiveis:</caption>
+        <li>TRIANGULO</li>
+        <li>QUADRADO</li>
+        <li>PENTAGONO</li>
+      </ul>
+      
+    </body>
+    <script>
+      
+      const calculate = document.getElementById('submit')
+      calculate.addEventListener('click', () => {
+        const userInput = document.querySelector("input#userInput").value
+        const info = [
+            {grau:"TRIANGULO", nLados:3},
+            {grau:"QUADRADO", nLados:4},
+            {grau:"PENTAGONO", nLados:5},
+    ]
+
+
+        for(let i =0;i<=info.length-1;++i) {
+            if(+userInput===+info[i].nLados){
+                alert(info[i].grau)
+                return
+            }
+        }
+
+        alert("Não é polígono")
+      })
+    </script>
+  </html>

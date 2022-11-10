@@ -1,0 +1,47 @@
+<html lang="pt-br">
+  <p>Coloque os seus dados na calculadora e calcule o seu IMC:</p>
+  <div class="field-age">
+    <label>Idade</label>
+  </div>
+  <input type="number" name="age" text="Idade" placeholder="Ex: 35" maxlength="200" id="age" min="0" max="119">
+  <span class="caption">anos</span>
+    <div class="field-height">
+      <label>Altura</label>
+    </div>
+  <input type="number" name="height" text="Altura" placeholder="Ex: 165" maxlength="200" id="height" min="0" max="225">
+  <span class="caption">cm</span>
+    <div class="field-weight">
+      <label>Peso</label>
+    </div>
+  <input type="number" name="weight" text="Peso" placeholder="Ex: 62,5" maxlength="200" id="weight" min="0" max="300">
+  <span class="caption">kg</span>
+    <div>
+      <input type="button" id="submit" name="calculate" value="Calcular">
+    </div>
+    
+  </body>
+  <script>
+    
+    const calculate = document.getElementById('submit')
+    // Crie a lógica a partir deste ponto
+    let history = []
+    let pesos = []
+    let alturas = []
+    let idades = []
+    calculate.addEventListener('click', () => {
+      const idade = document.getElementById('age').value
+      const altura = document.getElementById('height').value
+      const peso = document.getElementById('weight').value
+      const quadradoDaAltura = (altura/100)*(altura/100)
+      pesos.push(peso)
+      alturas.push(altura)
+      idades.push(idade)
+
+      const resultadoIMC = (peso/quadradoDaAltura).toPrecision(2)
+      alert(`RESULTADO IMC: ${resultadoIMC}`)
+      history.push(resultadoIMC)
+      console.log(history);
+      console.table({peso:pesos,altura:alturas,idade:idades,resultado:history})
+    })
+  </script>
+</html>

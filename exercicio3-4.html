@@ -1,0 +1,48 @@
+<html lang="pt-br">
+  <p>REVERTER PALAVRA:</p>
+  
+  <input type="number" id="numero1" name="age" text="Idade" >
+    <span class="caption">NUMERO 1</span>
+  
+    <input type="number" id="numero2" name="age" text="Idade" >
+    <span class="caption">NUMERO 2</span>
+  
+
+    <div>
+        <input onclick="fn(+document.querySelector('#numero1').value,+document.querySelector('#numero2').value)" type="button" id="submit" name="calculate" value="CALCULAR">
+    </div>
+   
+    <h1 class="maior"></h1>
+    <p class="lista"></p>
+  </body>
+  <script>
+    
+    const calculate = document.getElementById('submit')
+    let array = [];
+
+
+function addItemToList(item){
+    array.push(item)
+    document.querySelector('input#reverter').value=""
+    document.querySelector('input#reverter').focus()
+    document.querySelector('input#reverter').placeholder=`${item} adicionado`
+}
+
+function fn(n1,n2) {
+   let nums = [];
+
+   let factor;
+ 	for (let n = n1; n < n2; n++) {
+    	factor = 0
+    	for (let p = 0; p < n2; p++)
+        	if (n % p == 0) factor++;
+      	if (factor == 2)  document.querySelector(".maior").innerHTML+=n+" "
+  	}
+
+
+
+}
+        
+    
+  </script>
+</html>

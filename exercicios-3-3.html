@@ -1,0 +1,43 @@
+<html lang="pt-br">
+  <p>REVERTER PALAVRA:</p>
+  
+  <input type="text" id="reverter" name="age" text="Idade" placeholder="Ex: Banana">
+    <span class="caption">PALAVRAS</span>
+  
+    <div>
+        <input onclick="addItemToList(document.querySelector('input#reverter').value)" type="button" id="submit" name="calculate" value="ADICIONAR">
+    </div>
+    <div>
+        <input onclick="fn(document.querySelector('input#reverter').value)" type="button" id="submit" name="calculate" value="Calcular">
+    </div>
+    <h1 class="maior"></h1>
+    <h1 class="menor"></h1>
+    <p class="lista"></p>
+  </body>
+  <script>
+    
+    const calculate = document.getElementById('submit')
+    let array = [];
+
+
+function addItemToList(item){
+    array.push(item)
+    document.querySelector('input#reverter').value=""
+    document.querySelector('input#reverter').focus()
+    document.querySelector('input#reverter').placeholder=`${item} adicionado`
+}
+
+function fn(val) {
+   let sortArray = array.sort((a,b)=>a.length-b.length)
+   console.log(sortArray);
+
+
+    document.querySelector(".menor").innerHTML =  "MENOR: " + sortArray[0]
+    document.querySelector(".maior").innerHTML = "MAIOR: " +  sortArray[sortArray.length-1]
+    document.querySelector(".lista").innerHTML = "LISTA: " + JSON.stringify(sortArray)
+
+}
+        
+    
+  </script>
+</html>
