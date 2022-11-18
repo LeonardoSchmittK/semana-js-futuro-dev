@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CEP</title>
+</head>
+<body>
+    <div class="layout">
+        <div class="input-container">
+            <input type="number" class="cep-input">
+            <button onclick="findCEP(document.querySelector('.cep-input').value)">BUSCAR</button>
+        </div>
+        <div class="result-container">
+
+        </div>
+    </div>
+
+
+    <script>
+      const findCEP = async (cep) => {
+    const fn = await fetch(`https://brasilapi.com.br/api/cep/v1/${cep}`).then(response => {
+        return response.json();
+    }).then((data) => {
+            if (data.errors) {
+                alert("BUSQUE DE NOVO")
+                console.log("BUSQUE DE NOVO")
+
+            } else {
+                const resultContainer = document.querySelector(".result-container")
+                const mainData = ["state", "cep", "city", "street"]
+                for (let i in mainData) {
+
+                    resultContainer.innerHTML += data[mainData[i]] + " </br>"
+                }
+                console.log(data);
+            }
+
+        }
+
+
+    )
+
+
+}
+    </script>
+</body>
+</html>

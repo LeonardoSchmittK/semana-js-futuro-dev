@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RICK AND MORTY</title>
+</head>
+<body>
+    <div class="layout">
+        <div class="input-container">
+            <input type="number" class="character-input">
+            <button onclick="findPoke(document.querySelector('.character-input').value)">BUSCAR</button>
+            <button onclick="findPoke(++document.querySelector('.character-input').value)">+</button>
+            <button onclick="findPoke(--document.querySelector('.character-input').value)">-</button>
+        </div>
+        <div class="result-container">
+
+        </div>
+        <img src="" alt="" class="character-photo">
+    </div>
+
+
+    <script>
+        const findPoke = async (character) => {
+        const fn = await fetch(`https://rickandmortyapi.com/api/character/${character}`).then(response => {
+           
+        return response.json();
+    }).then((data) => {
+        if(data.error){
+            console.log(data.error +" DIGITE DE NOVO!");
+            alert("DIGITE DE NOVO!")
+         return
+        }
+        console.log(data);
+        document.querySelector('.character-input').value = character
+        
+        const resultContainer = document.querySelector(".result-container")
+        resultContainer.innerHTML =""
+                const mainData = ["name", "status", "species", "gender"]
+                for (let i in mainData) {
+
+                    resultContainer.innerHTML += data[mainData[i]] + " </br>"
+                }
+                
+                document.querySelector(".character-photo").src = data.image
+            }
+
+
+
+
+    )
+   
+
+
+}
+    </script>
+</body>
+</html>

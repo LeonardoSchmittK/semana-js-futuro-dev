@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POKE API</title>
+</head>
+<body>
+    <div class="layout">
+        <div class="input-container">
+            <input type="text" class="poke-input">
+            <button onclick="findPoke(document.querySelector('.poke-input').value)">BUSCAR</button>
+        </div>
+        <div class="result-container">
+
+        </div>
+    </div>
+
+
+    <script>
+        const findPoke = async (poke) => {
+        const fn = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke.toLowerCase()}`).then(response => {
+           
+        return response.json();
+    }).then(({stats}) => {
+            const [...stat]= stats
+           
+                const resultContainer = document.querySelector(".result-container")
+                for (let i in stat) {
+                    resultContainer.innerHTML += stat[i].stat.name  + " : " + "<mark>" + stat[i].base_stat + "</mark>" + " </br>"
+                }
+                
+            }
+
+
+
+    ).catch((e)=>{
+        console.log(e+"DIGITE DE NOVO!");
+        alert("DIGITE DE NOVO!")
+    })
+
+
+}
+    </script>
+</body>
+</html>
